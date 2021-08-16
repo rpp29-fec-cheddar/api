@@ -1,5 +1,7 @@
 import React from 'react';
 import SingleTile from './SingleTile.jsx';
+// import ReviewForm from './ReviewForm';
+import AddReview from './AddReview.jsx';
 
 class ReviewTiles extends React.Component {
   constructor(props) {
@@ -61,6 +63,7 @@ class ReviewTiles extends React.Component {
         </div>
         <br></br>
         {button}
+        <AddReview name={this.props.name} />
       </div>
     )
   }

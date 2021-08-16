@@ -16,9 +16,10 @@ class App extends React.Component {
     this.state = {
       // cart: 'GET /cart
       overview: '',
+      name: '',
       styles: '',
       related: '',
-      mainProductID: '36300',
+      mainProductID: '36301',
       relatedProductIDs: '',
       characteristics: {},
       ratings: {},
@@ -62,6 +63,7 @@ class App extends React.Component {
       success: (data) => {
         this.setState({
           overview: data[0],
+          name: data[0].name,
           styles: data[1],
           related: data[2],
           mainProductID: data[1].product_id,
@@ -139,6 +141,7 @@ class App extends React.Component {
           ratings={this.state.ratings}
           recommended={this.state.recommended}
           renderStars={this.renderStars}
+          name={this.state.name}
         />
       </div>
     )
