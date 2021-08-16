@@ -16,8 +16,8 @@ class ReviewForm extends React.Component {
       <div className="reviewForm-modal">
         <div className="reviewForm-content">
           <div className="reviewForm-header">
-            <h4 className="reviewForm-title">Write Your Review</h4>
-            <h3 className="reviewForm-subtitle">{this.props.name}</h3>
+            <h2 className="reviewForm-title">Write Your Review</h2>
+            <h4 className="reviewForm-subtitle">About the {this.props.name}</h4>
           </div>
           <div className="reviewForm-body">Form here</div>
           <div className="reviewForm-footer">
