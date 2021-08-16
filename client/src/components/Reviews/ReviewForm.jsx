@@ -9,6 +9,7 @@ class ReviewForm extends React.Component {
       meaning: ''
     }
     this.handleStarClick = this.handleStarClick.bind(this);
+    this.starsClickMandatory = this.starsClickMandatory.bind(this);
   }
 
   handleStarClick(event) {
@@ -32,6 +33,13 @@ class ReviewForm extends React.Component {
     });
   }
 
+  //on submit
+  starsClickMandatory() {
+    if (this.state.rating === 0) {
+      alert(please select an overall rating)
+    }
+  }
+
   render() {
     if (!this.props.show) {
       return null
@@ -41,11 +49,12 @@ class ReviewForm extends React.Component {
         <div className="reviewForm-content">
           <div className="reviewForm-header">
             <h2 className="reviewForm-title">Write Your Review</h2>
-            <h4 className="reviewForm-subtitle">About the {this.props.name}</h4>
+            <h3 className="reviewForm-subtitle">About the {this.props.name}</h3>
           </div>
           <div className="reviewForm-body">
-            <small><sup>*</sup></small>Overall rating<br></br>
+            <h4><small><sup>*</sup></small>Overall rating:</h4>
             <FormStars
+              starsClickMandatory={this.starsClickMandatory}
               clickStars={this.handleStarClick}
               rating={this.state.rating}
               meaning={this.state.meaning} />
