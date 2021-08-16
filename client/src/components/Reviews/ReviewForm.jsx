@@ -21,7 +21,9 @@ class ReviewForm extends React.Component {
       QualitySelection: 'none selected',
       LengthSelection: 'none selected',
       FitSelection: 'none selected',
-      summary: ''
+      summary: '',
+      body: '',
+      charsLeft: 50
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleCharInputChange = this.handleCharInputChange.bind(this);
@@ -97,6 +99,12 @@ class ReviewForm extends React.Component {
           FitSelection={this.state.FitSelection} />
       )
     }
+    let counter;
+    if (this.state.body.length < this.state.charsLeft) {
+      counter = <span>Minimum required characters left: [{this.state.charsLeft - this.state.body.length}]</span>
+    } else {
+      counter = <span>Minimum reached</span>
+    }
     return (
       <div className="reviewForm-modal">
         <div className="reviewForm-content">
@@ -141,6 +149,21 @@ class ReviewForm extends React.Component {
                   cols={60}
                   onChange={this.handleInputChange}
                   required />
+              </label>
+              <label>
+                <h3><small><sup>*</sup></small>Review body:</h3>
+                <textarea
+                  name="body"
+                  value={this.state.body}
+                  placeholder="Why did you like the product or not?"
+                  minLength="50"
+                  maxLength="1000"
+                  rows={6}
+                  cols={60}
+                  onChange={this.handleInputChange}
+                  required />
+                <br></br>
+                {counter}
               </label>
             </form>
 
