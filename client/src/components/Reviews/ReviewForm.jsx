@@ -20,7 +20,8 @@ class ReviewForm extends React.Component {
       ComfortSelection: 'none selected',
       QualitySelection: 'none selected',
       LengthSelection: 'none selected',
-      FitSelection: 'none selected'
+      FitSelection: 'none selected',
+      summary: ''
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleCharInputChange = this.handleCharInputChange.bind(this);
@@ -128,6 +129,18 @@ class ReviewForm extends React.Component {
               <label>
                 <h3><small><sup>*</sup></small>Characteristics:</h3>
                 {chars}
+              </label>
+              <label>
+                <h3>Review summary:</h3>
+                <textarea
+                  name="summary"
+                  value={this.state.summary}
+                  placeholder="Example: Best purchase ever!"
+                  maxLength="60"
+                  rows={1}
+                  cols={60}
+                  onChange={this.handleInputChange}
+                  required />
               </label>
             </form>
 
