@@ -68,7 +68,7 @@ class ReviewTiles extends React.Component {
         <br></br>
         <br></br>
         <br></br>
-        <FormStars />
+
       </div>
     )
   }

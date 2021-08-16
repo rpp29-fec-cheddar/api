@@ -49,13 +49,13 @@
 
 .formStarContainer {
   width: 8em;
-  position: relative ;
+  position: relative;
 }
 
 /*adjust width percentage according to review percentage*/
 /* height must match .starsLayout width */
 .formStarBox {
-  position: relative;
+  position: static;
   background-color: #525252;
   width: 100%;
   height: 1.6em;
@@ -74,6 +74,16 @@
   height: auto;
   float: left;
   z-index: 1;
+}
+
+.formStars {
+  display: inline-flex;
+  width: 11em;
+  justify-content: space-between;
+}
+
+.meaning {
+  padding-top: 0.45em;
 }
 
 .modal {
