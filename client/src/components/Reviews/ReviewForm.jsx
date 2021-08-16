@@ -6,10 +6,21 @@ class ReviewForm extends React.Component {
     super(props);
     this.state = {
       rating: 0,
-      meaning: ''
+      meaning: '',
+      rec: 'Yes'
     }
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleStarClick = this.handleStarClick.bind(this);
     this.starsClickMandatory = this.starsClickMandatory.bind(this);
+  }
+
+  handleInputChange(event) {
+    let target = event.target;
+    let value = target.value;
+    let name = target.name;
+    this.setState({
+      [name]: value
+    });
   }
 
   handleStarClick(event) {
@@ -36,7 +47,7 @@ class ReviewForm extends React.Component {
   //on submit
   starsClickMandatory() {
     if (this.state.rating === 0) {
-      alert(please select an overall rating)
+      alert('please select an overall rating');
     }
   }
 
@@ -59,6 +70,20 @@ class ReviewForm extends React.Component {
               rating={this.state.rating}
               meaning={this.state.meaning} />
             <form>
+              <label>
+                <h4><small><sup>*</sup></small>Do you recommend this product?:</h4>
+                <input
+                  name="rec"
+                  type="radio"
+                  value="Yes"
+                  defaultChecked
+                  onChange={this.handleInputChange} />Yes
+                <input
+                  name="rec"
+                  type="radio"
+                  value="No"
+                  onChange={this.handleInputChange} />No
+              </label>
             </form>
 
 
