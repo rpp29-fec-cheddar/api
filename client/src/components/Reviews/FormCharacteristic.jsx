@@ -78,8 +78,7 @@ const FormCharacteristic = (props) => {
                 value={`${lowest}`}
                 char={props.char}
                 name={`characteristics-${props.char}`}
-                onChange={props.handleCharInputChange}
-                required />
+                onChange={props.handleCharInputChange} />
             </td>
             <td>
               <input
@@ -89,8 +88,7 @@ const FormCharacteristic = (props) => {
                 value={`${second}`}
                 char={props.char}
                 name={`characteristics-${props.char}`}
-                onChange={props.handleCharInputChange}
-                required />
+                onChange={props.handleCharInputChange} />
             </td>
             <td>
               <input
@@ -100,8 +98,7 @@ const FormCharacteristic = (props) => {
                 value={`${middle}`}
                 char={props.char}
                 name={`characteristics-${props.char}`}
-                onChange={props.handleCharInputChange}
-                required />
+                onChange={props.handleCharInputChange} />
             </td>
             <td>
               <input
@@ -111,8 +108,7 @@ const FormCharacteristic = (props) => {
                 value={`${fourth}`}
                 char={props.char}
                 name={`characteristics-${props.char}`}
-                onChange={props.handleCharInputChange}
-                required />
+                onChange={props.handleCharInputChange} />
             </td>
             <td>
               <input
@@ -122,8 +118,7 @@ const FormCharacteristic = (props) => {
                 value={`${highest}`}
                 char={props.char}
                 name={`characteristics-${props.char}`}
-                onChange={props.handleCharInputChange}
-                required />
+                onChange={props.handleCharInputChange} />
             </td>
           </tr>
           <tr>

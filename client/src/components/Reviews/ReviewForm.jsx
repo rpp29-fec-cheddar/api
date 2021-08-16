@@ -15,6 +15,7 @@ class ReviewForm extends React.Component {
       Quality: 0,
       Length: 0,
       Fit: 0,
+      charTotal: 0,
       SizeSelection: 'none selected',
       WidthSelection: 'none selected',
       ComfortSelection: 'none selected',
@@ -23,12 +24,15 @@ class ReviewForm extends React.Component {
       FitSelection: 'none selected',
       summary: '',
       body: '',
-      charsLeft: 50
+      charsLeft: 50,
+      photos: [],
+      nickname: '',
+      email: ''
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleCharInputChange = this.handleCharInputChange.bind(this);
     this.handleStarClick = this.handleStarClick.bind(this);
-    this.starsClickMandatory = this.starsClickMandatory.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInputChange(event) {
@@ -48,6 +52,9 @@ class ReviewForm extends React.Component {
     this.setState({
       [char]: num,
       [`${char}Selection`]: value
+    })
+    this.setState((prevState) => {
+      charTotal: prevState.charTotal + 1;
     });
   }
 
@@ -72,11 +79,32 @@ class ReviewForm extends React.Component {
     });
   }
 
-  //on submit
-  starsClickMandatory() {
+  handleSubmit(event) {
+    event.preventDefault();
+    let needWarning = false;
+    let revCharacteristics = Object.keys(this.props.characteristics);
+    let warningMessage = 'You must enter the following: ';
     if (this.state.rating === 0) {
-      alert('please select an overall rating');
+      needWarning = true;
+      warningMessage += '\n' + 'Overall rating';
     }
+    if (this.state.charTotal < revCharacteristics.length) {
+      needWarning = true;
+      warningMessage += '\n' + 'Characteristic ratings';
+    }
+    if (this.state.body.length < 50) {
+      needWarning = true;
+      warningMessage += '\n' + 'Review body';
+    }
+    if (this.state.nickname.length < 1) {
+      needWarning = true;
+      warningMessage += '\n' + 'Nickname';
+    }
+    if (this.state.email.length < 6) {
+      needWarning = true;
+      warningMessage += '\n' + 'Email';
+    }
+    alert(warningMessage);
   }
 
   render() {
@@ -105,6 +133,10 @@ class ReviewForm extends React.Component {
     } else {
       counter = <span>Minimum reached</span>
     }
+    let picsButton;
+    if (this.state.photos.length < 5) {
+      picsButton = <button>Choose File</button>
+    }
     return (
       <div className="reviewForm-modal">
         <div className="reviewForm-content">
@@ -121,7 +153,7 @@ class ReviewForm extends React.Component {
               meaning={this.state.meaning} />
             <form>
               <label>
-                <h3><small><sup>*</sup></small>Do you recommend this product?:</h3>
+                <h3><small><sup>*</sup></small>Do you recommend this product?</h3>
                 <input
                   name="rec"
                   type="radio"
@@ -135,11 +167,11 @@ class ReviewForm extends React.Component {
                   onChange={this.handleInputChange} />No
               </label>
               <label>
-                <h3><small><sup>*</sup></small>Characteristics:</h3>
+                <h3><small><sup>*</sup></small>Characteristics</h3>
                 {chars}
               </label>
               <label>
-                <h3>Review summary:</h3>
+                <h3>Review summary</h3>
                 <textarea
                   name="summary"
                   value={this.state.summary}
@@ -147,11 +179,10 @@ class ReviewForm extends React.Component {
                   maxLength="60"
                   rows={1}
                   cols={60}
-                  onChange={this.handleInputChange}
-                  required />
+                  onChange={this.handleInputChange} />
               </label>
               <label>
-                <h3><small><sup>*</sup></small>Review body:</h3>
+                <h3><small><sup>*</sup></small>Review body</h3>
                 <textarea
                   name="body"
                   value={this.state.body}
@@ -160,11 +191,42 @@ class ReviewForm extends React.Component {
                   maxLength="1000"
                   rows={6}
                   cols={60}
-                  onChange={this.handleInputChange}
-                  required />
+                  onChange={this.handleInputChange} />
                 <br></br>
                 {counter}
               </label>
+              <label>
+                <h3>Upload your photos</h3>
+                Need to figure this out later...
+              </label>
+              <label>
+                <h3><small><sup>*</sup></small>What is your nickname?</h3>
+                <input
+                  name="nickname"
+                  type="text"
+                  value={this.state.nickname}
+                  placeholder="Example: jackson11!"
+                  maxLength="60"
+                  onChange={this.handleInputChange} />
+                <br></br>
+                  For privacy reasons, do not use your full name or email address
+              </label>
+              <label>
+                <h3><small><sup>*</sup></small>Your email</h3>
+                <textarea
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  placeholder="Example: jackson11@email.com"
+                  maxLength="60"
+                  rows={1}
+                  cols={30}
+                  onChange={this.handleInputChange} />
+                <br></br>
+                  For authentication reasons, you will not be emailed
+                <br></br>
+              </label>
+              <input type="submit" value="Submit review" onSubmit={ () => { return false } } onClick={this.handleSubmit}></input>
             </form>
 
 
