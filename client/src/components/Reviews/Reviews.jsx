@@ -80,7 +80,8 @@ class Reviews extends React.Component {
             recommended={this.props.recommended}
             renderStars={this.props.renderStars}
             filterNums={this.state.filterNums}
-            name={this.props.name} />
+            name={this.props.name}
+            characteristics={this.props.characteristics} />
           <br></br>
           {/*
           add a review button with onClick

@@ -1,5 +1,6 @@
 import React from 'react';
 import FormStars from './FormStars.jsx';
+import FormCharacteristic from './FormCharacteristic.jsx';
 
 class ReviewForm extends React.Component {
   constructor(props) {
@@ -7,9 +8,22 @@ class ReviewForm extends React.Component {
     this.state = {
       rating: 0,
       meaning: '',
-      rec: 'Yes'
+      rec: 'Yes',
+      Size: 0,
+      Width: 0,
+      Comfort: 0,
+      Quality: 0,
+      Length: 0,
+      Fit: 0,
+      SizeSelection: 'none selected',
+      WidthSelection: 'none selected',
+      ComfortSelection: 'none selected',
+      QualitySelection: 'none selected',
+      LengthSelection: 'none selected',
+      FitSelection: 'none selected'
     }
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleCharInputChange = this.handleCharInputChange.bind(this);
     this.handleStarClick = this.handleStarClick.bind(this);
     this.starsClickMandatory = this.starsClickMandatory.bind(this);
   }
@@ -20,6 +34,17 @@ class ReviewForm extends React.Component {
     let name = target.name;
     this.setState({
       [name]: value
+    });
+  }
+
+  handleCharInputChange(event) {
+    let target = event.target;
+    let value = target.value;
+    let num = Number(target.attributes[1].value);
+    let char = target.attributes[3].value;
+    this.setState({
+      [char]: num,
+      [`${char}Selection`]: value
     });
   }
 
@@ -55,6 +80,22 @@ class ReviewForm extends React.Component {
     if (!this.props.show) {
       return null
     }
+    let characteristics = Object.keys(this.props.characteristics);
+    let chars;
+    if (characteristics.length > 0) {
+      chars = characteristics.map((char, index) =>
+        <FormCharacteristic
+          key={`char-${index}`}
+          char={char}
+          handleCharInputChange={this.handleCharInputChange}
+          SizeSelection={this.state.SizeSelection}
+          WidthSelection={this.state.WidthSelection}
+          ComfortSelection={this.state.ComfortSelection}
+          QualitySelection={this.state.QualitySelection}
+          LengthSelection={this.state.LengthSelection}
+          FitSelection={this.state.FitSelection} />
+      )
+    }
     return (
       <div className="reviewForm-modal">
         <div className="reviewForm-content">
@@ -63,7 +104,7 @@ class ReviewForm extends React.Component {
             <h3 className="reviewForm-subtitle">About the {this.props.name}</h3>
           </div>
           <div className="reviewForm-body">
-            <h4><small><sup>*</sup></small>Overall rating:</h4>
+            <h3><small><sup>*</sup></small>Overall rating:</h3>
             <FormStars
               starsClickMandatory={this.starsClickMandatory}
               clickStars={this.handleStarClick}
@@ -71,7 +112,7 @@ class ReviewForm extends React.Component {
               meaning={this.state.meaning} />
             <form>
               <label>
-                <h4><small><sup>*</sup></small>Do you recommend this product?:</h4>
+                <h3><small><sup>*</sup></small>Do you recommend this product?:</h3>
                 <input
                   name="rec"
                   type="radio"
@@ -83,6 +124,10 @@ class ReviewForm extends React.Component {
                   type="radio"
                   value="No"
                   onChange={this.handleInputChange} />No
+              </label>
+              <label>
+                <h3><small><sup>*</sup></small>Characteristics:</h3>
+                {chars}
               </label>
             </form>
 

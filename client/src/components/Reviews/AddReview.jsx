@@ -6,7 +6,11 @@ const AddReview = (props) => {
   return (
     <div className="addReview">
       <button className="addReview" onClick={ () => setShow(true) }>Add A Review</button>
-      <ReviewForm name={props.name} show={show} onClose={ () => setShow(false) } />
+      <ReviewForm
+        name={props.name}
+        characteristics={props.characteristics}
+        show={show}
+        onClose={ () => setShow(false) } />
     </div>
   )
 }
