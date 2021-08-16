@@ -47,6 +47,35 @@
   z-index: 1;
 }
 
+.formStarContainer {
+  width: 8em;
+  position: relative ;
+}
+
+/*adjust width percentage according to review percentage*/
+/* height must match .starsLayout width */
+.formStarBox {
+  position: relative;
+  background-color: #525252;
+  width: 100%;
+  height: 1.6em;
+  z-index: -1;
+}
+
+.formInlineStars {
+  width: 8em;
+  background-color: transparent;
+}
+
+/*stars width must be 1/5th of starContainer's width*/
+.formStarsLayout {
+  position: relative;
+  width: 1.6em;
+  height: auto;
+  float: left;
+  z-index: 1;
+}
+
 .modal {
   position: fixed;
   left: 0;
@@ -284,11 +313,11 @@ div {
   overflow: scroll;
 }
 
-.yes {
+.helpfulYes {
   text-decoration: underline;
 }
 
-.yes:hover {
+.helpfulYes:hover {
   cursor: pointer;
 }
 

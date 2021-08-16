@@ -114,7 +114,7 @@ class SingleTile extends React.Component {
           <div className="reviewImages">{images}</div><br></br>
           {recommends}<br></br>
           {response}
-          <p className="reviewHelpful">Helpful? <a className="yes" onClick={this.handleHelpfulClick} id={this.props.review.review_id}>Yes</a> ({this.state.helpfulness})</p>
+          <p className="reviewHelpful">Helpful? <a className="helpfulYes" onClick={this.handleHelpfulClick} id={this.props.review.review_id}>Yes</a> ({this.state.helpfulness})</p>
         </div>
         <br></br>
       </div>
