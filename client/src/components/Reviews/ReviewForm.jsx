@@ -1,6 +1,7 @@
 import React from 'react';
 import FormStars from './FormStars.jsx';
 import FormCharacteristic from './FormCharacteristic.jsx';
+import $ from 'jquery';
 
 class ReviewForm extends React.Component {
   constructor(props) {
@@ -15,7 +16,6 @@ class ReviewForm extends React.Component {
       Quality: 0,
       Length: 0,
       Fit: 0,
-      charTotal: 0,
       SizeSelection: 'none selected',
       WidthSelection: 'none selected',
       ComfortSelection: 'none selected',
@@ -33,6 +33,7 @@ class ReviewForm extends React.Component {
     this.handleCharInputChange = this.handleCharInputChange.bind(this);
     this.handleStarClick = this.handleStarClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.calculateCharTotal = this.calculateCharTotal.bind(this);
   }
 
   handleInputChange(event) {
@@ -52,10 +53,30 @@ class ReviewForm extends React.Component {
     this.setState({
       [char]: num,
       [`${char}Selection`]: value
-    })
-    this.setState((prevState) => {
-      charTotal: prevState.charTotal + 1;
     });
+  }
+
+  calculateCharTotal() {
+    let charTotal = 0;
+    if (this.state.Size > 0) {
+      charTotal += 1;
+    }
+    if (this.state.Width > 0) {
+      charTotal += 1;
+    }
+    if (this.state.Comfort > 0) {
+      charTotal += 1;
+    }
+    if (this.state.Quality > 0) {
+      charTotal += 1;
+    }
+    if (this.state.Length > 0) {
+      charTotal += 1;
+    }
+    if (this.state.Fir > 0) {
+      charTotal += 1;
+    }
+    return charTotal;
   }
 
   handleStarClick(event) {
@@ -84,11 +105,12 @@ class ReviewForm extends React.Component {
     let needWarning = false;
     let revCharacteristics = Object.keys(this.props.characteristics);
     let warningMessage = 'You must enter the following: ';
+    let charTotal = this.calculateCharTotal();
     if (this.state.rating === 0) {
       needWarning = true;
       warningMessage += '\n' + 'Overall rating';
     }
-    if (this.state.charTotal < revCharacteristics.length) {
+    if (charTotal < revCharacteristics.length) {
       needWarning = true;
       warningMessage += '\n' + 'Characteristic ratings';
     }
@@ -104,7 +126,11 @@ class ReviewForm extends React.Component {
       needWarning = true;
       warningMessage += '\n' + 'Email';
     }
-    alert(warningMessage);
+    if (needWarning) {
+      alert(warningMessage);
+    } else {
+      //post request here
+    }
   }
 
   render() {
