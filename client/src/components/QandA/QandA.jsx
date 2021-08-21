@@ -22,14 +22,14 @@ const QnA = (props) => {
   const [isQuestionModal, setIsQuestionModal] = useState(true);
 
   useEffect(() => {
-    console.log('This is qData: ', props.qData)
+    //console.log('This is qData: ', props.qData)
 
     let data = props.qData.slice();
     if (data.length > 1) {
       data.sort(compare);
     }
     setQuestions(data);
-    console.log('This is questions: ', questions);
+    //console.log('This is questions: ', questions);
 
   }, [props.qData]);
 

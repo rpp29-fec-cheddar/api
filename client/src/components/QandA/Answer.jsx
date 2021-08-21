@@ -6,24 +6,24 @@ const Answer = ({ answer }) => {
   const [helpful, setHelpful] = useState(false);
 
   const reportAnswer = (id) => {
-    console.log(`Answer id ${id} reported`);
+    //console.log(`Answer id ${id} reported`);
     setReported(true);
   };
   const tagAnswerHelpful = (id) => {
-    console.log(`Answer id ${id} is tagged helpful`);
+    //console.log(`Answer id ${id} is tagged helpful`);
 
 
     let helpfulCount = document.getElementById('aHelp').innerHTML
-    console.log(typeof helpfulCount, helpfulCount)
+    //console.log(typeof helpfulCount, helpfulCount)
 
     helpfulCount = Number(helpfulCount.replace(/[^\d.-]/g, ''));
 
-    console.log(typeof helpfulCount, helpfulCount)
+    //console.log(typeof helpfulCount, helpfulCount)
 
     helpfulCount++;
-    console.log(helpfulCount)
+    //console.log(helpfulCount)
     document.getElementById('aHelp').innerHTML = helpfulCount.toString();
-    console.log(helpfulCount)
+    //console.log(helpfulCount)
 
     setHelpful(true);
   };

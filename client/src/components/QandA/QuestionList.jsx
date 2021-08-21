@@ -3,14 +3,14 @@ import Question from './Question.jsx';
 
 const QuestionList = ({setShowModal, filteredQuestion, setIsQuestionModal, setQuestionBody, }) => {
 
-  console.log(filteredQuestion);
+  //console.log(filteredQuestion);
   const [questionLimit, setQuestionLimit] = useState(2);
   const addLimit = () => {
     setQuestionLimit(questionLimit + 2);
   };
 
   const addQuestion = () => {
-    console.log('I am add question button');
+    //console.log('I am add question button');
     setShowModal(true);
     setIsQuestionModal(true);
   };

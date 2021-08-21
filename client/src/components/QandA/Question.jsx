@@ -16,7 +16,7 @@ const Question = ({question, setIsQuestionModal, setShowModal, setQuestionBody, 
   };
 
   const tagHelpful = (id) => {
-    console.log(`Question is tagged helpful ${id}`);
+    //console.log(`Question is tagged helpful ${id}`);
 
     // let data = {qId: id}
 
@@ -31,16 +31,16 @@ const Question = ({question, setIsQuestionModal, setShowModal, setQuestionBody, 
     // })
 
     let helpfulCount = document.getElementById('helpfulQ').innerHTML
-    console.log(typeof helpfulCount, helpfulCount)
+    //console.log(typeof helpfulCount, helpfulCount)
 
     helpfulCount = Number(helpfulCount.replace(/[^\d.-]/g, ''));
 
-    console.log(typeof helpfulCount, helpfulCount)
+    //console.log(typeof helpfulCount, helpfulCount)
 
     helpfulCount++;
-    console.log(helpfulCount)
+    //console.log(helpfulCount)
     document.getElementById('helpfulQ').innerHTML = helpfulCount.toString();
-    console.log(helpfulCount)
+    //console.log(helpfulCount)
 
     setTaggedHelpful(true);
   };

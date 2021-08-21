@@ -13,7 +13,7 @@ const AnswerList = ({ answers }) => {
 
   const answerkeys = Object.keys(answers) ? Object.keys(answers) : [];
   answerkeys.sort(compare);
-  console.log(answerkeys);
+  //console.log(answerkeys);
 
   const renderedAnswers = answerkeys.slice(0, answerLimit).map((key) => {
     return <Answer key={key} answer={answers[key]} />;

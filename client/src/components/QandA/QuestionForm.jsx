@@ -7,9 +7,9 @@ const QuestionForm = ( { onClose }) => {
   const [email, setEmail] = useState('');
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(question);
+    /* console.log(question);
     console.log(nickname);
-    console.log(email);
+    console.log(email); */
 
     onClose();
   };
