@@ -92,7 +92,7 @@ class RatingBreakdown extends React.Component {
     }
 
     return (
-      <div>
+      <div classname="ratingBreakdownFull">
         <div className="ratingBreakdown" onClick={(e) => this.props.recordClick(e)}>
           {filterMessageStart}
           <div className="filterMessages" onClick={(e) => this.props.recordClick(e)}>

@@ -10,8 +10,7 @@
     "test:related": "jest relatedProducts.spec.js --collectCoverage --detectOpenHandles",
     "test:reviews": "jest reviews.spec.js --collectCoverage --detectOpenHandles",
     "build:dev": "webpack -w",
-    "start": "nodemon ./server/server.js",
-    "sass": "sass --watch client/dist/styles.scss output.css"
+    "start": "nodemon ./server/server.js"
   },
   "repository": {
     "type": "git",

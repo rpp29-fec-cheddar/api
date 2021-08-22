@@ -50,8 +50,8 @@ class Reviews extends React.Component {
   }
 
   render() {
-    if (this.state.changed) {
-      return (
+    return (
+      <div className="reviews">
         <ClickTracker>
           {tracker => (
             <div>
@@ -99,10 +99,8 @@ class Reviews extends React.Component {
             </div>
           )}
         </ClickTracker>
-      )
-    } else {
-      return null;
-    }
+      </div>
+    )
   }
 }
 
