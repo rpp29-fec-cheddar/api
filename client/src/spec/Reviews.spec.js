@@ -243,6 +243,3 @@ describe('FormStars', () => {
   });
 
 });
-
-
-

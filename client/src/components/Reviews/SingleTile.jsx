@@ -117,32 +117,34 @@ class SingleTile extends React.Component {
       </div>;
     }
     return (
-      <div
-        className="singleTile"
-        onClick={(e) => this.props.recordClick(e)}>
-        <div className="topOfSingleTile">
-          {renderStars(review.rating)}<br></br>
-          <div className="nameAndDate">
-            {review.reviewer_name},&nbsp;{date}<br></br>
-          </div>
-        </div>
-        <strong><p className="reviewSummary" onClick={(e) => this.props.recordClick(e)}>{review.summary}</p></strong>
-        <div className="reviewBody">{revBody} <a onClick={this.handleExtendClick}>{show}</a></div>
-        <div className="reviewImages">{images}</div>
-        {recommends}
-        {response}
-        <p
-          className="reviewHelpful"
+      <div>
+        <div
+          className="singleTile"
           onClick={(e) => this.props.recordClick(e)}>
-            Helpful? &nbsp;
-          <a
-            className="helpfulYes"
-            onClick={this.handleHelpfulClick}
-            id={this.props.review.review_id}>
-            Yes
-          </a>
-            ({this.state.helpfulness})
-        </p>
+          <div className="topOfSingleTile">
+            {renderStars(review.rating)}<br></br>
+            <div className="nameAndDate">
+              {review.reviewer_name},&nbsp;{date}<br></br>
+            </div>
+          </div>
+          <strong><p className="reviewSummary" onClick={(e) => this.props.recordClick(e)}>{review.summary}</p></strong>
+          <div className="reviewBody">{revBody} <a onClick={this.handleExtendClick}>{show}</a></div>
+          <div className="reviewImages">{images}</div>
+          {recommends}
+          {response}
+          <p
+            className="reviewHelpful"
+            onClick={(e) => this.props.recordClick(e)}>
+              Helpful? &nbsp;
+            <a
+              className="helpfulYes"
+              onClick={this.handleHelpfulClick}
+              id={this.props.review.review_id}>
+              Yes
+            </a>
+              ({this.state.helpfulness})
+          </p>
+        </div>
         <br></br>
       </div>
     )
