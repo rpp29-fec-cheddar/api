@@ -21,8 +21,10 @@ router.get('/questions', wrap(async (req, res, next) => {
 //post question
 router.post('/questions', wrap(async (req, res, next)=> {
 
+  console.log(req.body);
+
   let question = {
-    body: req.body.postBody,
+    body: req.body.body,
     name: req.body.name,
     email: req.body.email,
     product_id: req.body.id
@@ -49,7 +51,7 @@ router.post('/answer', wrap(async (req, res, next)=> {
   }
 
   try {
-    const response = await axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/:${req.body.id}/answers`, answer,
+    const response = await axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.id}/answers`, answer,
       {headers: {Authorization: process.env.TOKEN}});
     res.sendStatus(201);
   } catch (error) {
@@ -64,11 +66,12 @@ router.put('/qHelpful', wrap(async (req, res, next)=> {
   console.log('This is to mark helpful id ', req.body.qId)
 
   try {
-    const response = await axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/:${req.body.qId}/helpful`,
+    const response = await axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.qId}/helpful`, null,
       {headers: {Authorization: process.env.TOKEN}});
-    res.sendStatus(201);
+    res.sendStatus(204);
   } catch (error) {
     console.log('Error in put helpful /qHelpful: ', error);
+    res.send(error)
 
   }
 }));
@@ -78,7 +81,7 @@ router.put('/qReport', wrap(async (req, res, next)=> {
 
 
   try {
-    const response = await axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/:${req.body.id}/report`,
+    const response = await axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/questions/${req.body.id}/report`, null,
       {headers: {Authorization: process.env.TOKEN}});
     res.sendStatus(201);
   } catch (error) {
@@ -92,7 +95,7 @@ router.put('/aHelpful', wrap(async (req, res, next)=> {
 
 
   try {
-    const response = await axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/:${req.body.id}/helpful`,
+    const response = await axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${req.body.id}/helpful`, null,
       {headers: {Authorization: process.env.TOKEN}});
     res.sendStatus(201);
   } catch (error) {
@@ -106,7 +109,7 @@ router.put('/aReport', wrap(async (req, res, next)=> {
 
 
   try {
-    const response = await axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/:${req.body.id}/report`,
+    const response = await axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rpp/qa/answers/${req.body.id}/report`, null,
       {headers: {Authorization: process.env.TOKEN}});
     res.sendStatus(201);
   } catch (error) {

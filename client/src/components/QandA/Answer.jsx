@@ -1,17 +1,44 @@
 import React, { useState } from 'react';
 import moment from 'moment';
 
+import axios from 'axios';
+
 const Answer = ({ answer }) => {
   const [reported, setReported] = useState(false);
   const [helpful, setHelpful] = useState(false);
 
+
   const reportAnswer = (id) => {
     //console.log(`Answer id ${id} reported`);
+
+    let data = {id: id}
+
+    axios({
+      method: 'put',
+      url: 'http://localhost:4000/qna/aReport',
+      data: data
+    }).then ((response) => {
+      console.log('response for put: ', response)
+    }).catch((err) => {
+      console.log('response error for put: ', err)
+    })
+
     setReported(true);
   };
   const tagAnswerHelpful = (id) => {
     //console.log(`Answer id ${id} is tagged helpful`);
 
+    let data = {id: id}
+
+    axios({
+      method: 'put',
+      url: 'http://localhost:4000/qna/aHelpful',
+      data: data
+    }).then ((response) => {
+      console.log('response for put: ', response)
+    }).catch((err) => {
+      console.log('response error for put: ', err)
+    })
 
     let helpfulCount = document.getElementById('aHelp').innerHTML
     //console.log(typeof helpfulCount, helpfulCount)

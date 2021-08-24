@@ -11,3 +11,4 @@ client/dist/bundle.js
 /client/dist/bundle.js
 
 *notes.txt
+__mocks__

@@ -11,8 +11,8 @@ import { expect } from 'chai';
 
 import QnA from '../components/QandA/QandA.jsx';
 import QuestionList from '../components/QandA/QuestionList.jsx';
-import SearchQuestion from '../components/QandA/SearchQuestion.jsx';
-import TwoButtons from '../components/QandA/TwoButtons.jsx'
+import Search from '../components/QandA/Search.jsx';
+
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -28,11 +28,11 @@ describe('QandA Component Tests', () => {
     expect(wrapper.find('.qHeader')).to.have.lengthOf(1);
   });
 
-  it('renders the SearchQuestion, QuestionList, and TwoButtons component', () => {
+  it('renders the Search, QuestionList component', () => {
     let wrapper = shallow(<QnA />);
     expect(wrapper.contains(<QuestionList />)).to.equal(true);
-    expect(wrapper.containsMatchingElement(<SearchQuestion />)).to.equal(true);
-    expect(wrapper.containsMatchingElement(<TwoButtons />)).to.equal(true);
+    expect(wrapper.containsMatchingElement(<Search />)).to.equal(true);
+
   });
 
 });

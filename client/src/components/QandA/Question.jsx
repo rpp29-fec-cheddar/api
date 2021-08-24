@@ -18,17 +18,17 @@ const Question = ({question, setIsQuestionModal, setShowModal, setQuestionBody, 
   const tagHelpful = (id) => {
     //console.log(`Question is tagged helpful ${id}`);
 
-    // let data = {qId: id}
+    let data = {qId: id}
 
-    // axios({
-    //   method: 'put',
-    //   url: 'http://localhost:4000/qna/qHelpful',
-    //   data: data
-    // }).then ((response) => {
-    //   console.log('response for put: ', response)
-    // }).catch((err) => {
-    //   console.log('response error for put: ', err)
-    // })
+    axios({
+      method: 'put',
+      url: 'http://localhost:4000/qna/qHelpful',
+      data: data
+    }).then ((response) => {
+      console.log('response for put: ', response)
+    }).catch((err) => {
+      console.log('response error for put: ', err)
+    })
 
     let helpfulCount = document.getElementById('helpfulQ').innerHTML
     //console.log(typeof helpfulCount, helpfulCount)
